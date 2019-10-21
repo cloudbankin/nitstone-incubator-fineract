@@ -3227,7 +3227,7 @@ public class LoanWritePlatformServiceJpaRepositoryImpl implements LoanWritePlatf
            for (Integer frequency : frequencyNumbers) {
                scheduleDates.remove(frequency);
            }
-
+           
            LoanRepaymentScheduleInstallment installment = null;
            LocalDate lastChargeAppliedDate = dueDate;
            if (!scheduleDates.isEmpty()) {
@@ -3237,8 +3237,10 @@ public class LoanWritePlatformServiceJpaRepositoryImpl implements LoanWritePlatf
                    existingTransactionIds.addAll(loan.findExistingTransactionIds());
                    existingReversedTransactionIds.addAll(loan.findExistingReversedTransactionIds());
                }
+               
                installment = loan.fetchRepaymentScheduleInstallment(periodNumber);
                lastChargeAppliedDate = installment.getDueDate();
+               
            }
            LocalDate recalculateFrom = DateUtils.getLocalDateOfTenant();
 

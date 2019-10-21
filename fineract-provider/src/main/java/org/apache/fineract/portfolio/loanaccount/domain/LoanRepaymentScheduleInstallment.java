@@ -402,7 +402,11 @@ public final class LoanRepaymentScheduleInstallment extends AbstractAuditableCus
 
     
     public void setPenaltyIncome(BigDecimal Income,final MonetaryCurrency currency) {
+    	if(Income !=null) {
     	this.penaltyIncome=getPenaltyIncome(currency).plus(Money.of(currency,Income)).getAmount();
+    	}else{
+    		this.penaltyIncome=BigDecimal.ZERO;
+    	}
     }
 
     

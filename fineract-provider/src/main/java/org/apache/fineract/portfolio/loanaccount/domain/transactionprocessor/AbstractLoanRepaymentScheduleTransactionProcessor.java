@@ -86,7 +86,7 @@ public abstract class AbstractLoanRepaymentScheduleTransactionProcessor implemen
         // loan charges)
         final LoanRepaymentScheduleProcessingWrapper wrapper = new LoanRepaymentScheduleProcessingWrapper();
         
-        /** Habile Changes **/
+        
         wrapper.reprocessForMonthEnd(currency, disbursementDate, installments, charges);
         
         //wrapper.reprocess(currency, disbursementDate, installments, charges);
@@ -225,6 +225,7 @@ public abstract class AbstractLoanRepaymentScheduleTransactionProcessor implemen
                 				
                 				 
                 				 BigDecimal penaltyIncome = loanRepaymentScheduleInstallment.getPendingPenaltyIncome(currency).getAmount();
+                				 
                 					
                 					 if(Money.of(currency, penaltyIncome).isGreaterThan(penaltyPostingAmount))
                 					 {

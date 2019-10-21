@@ -5633,8 +5633,14 @@ public class Loan extends AbstractPersistableCustom<Long> {
             determineFeeDetails(lastCompoundingDate, compoundingDetail.getEffectiveDate(), feeDetails);
             fee = (BigDecimal) feeDetails.get("fee");
             penalties = (BigDecimal) feeDetails.get("penalties");
-            /*interest = compoundingDetail.getAmount().subtract(fee).subtract(penalties);*/   
-            interest = compoundingDetail.getAmount();  //balaji
+            LoanProduct loanproduct = this.loanProduct;
+            if(!loanproduct.isNewProductConfig())
+            {
+            interest = compoundingDetail.getAmount().subtract(fee).subtract(penalties);   
+            } else {
+            interest = compoundingDetail.getAmount();  //change
+            
+            }
             
         }
 
